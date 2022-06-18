@@ -6,7 +6,9 @@ from database import database
 from rooms import rooms_service
 from users import users_service
 
-app_port = os.environ['PORT']
+app_port = int(os.environ['PORT'])
+
+
 def set_user_login(obj, login, password):
     with obj['db']:
         cursor = obj['db'].cursor()
@@ -48,6 +50,7 @@ def as_server_command():
         "host": "0.0.0.0",
         "loop": "asyncio"
     })
+
 
 @run_command.group('user')
 def user_command():
