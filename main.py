@@ -6,7 +6,7 @@ from database import database
 from rooms import rooms_service
 from users import users_service
 
-
+app_port = os.environ['PORT']
 def set_user_login(obj, login, password):
     with obj['db']:
         cursor = obj['db'].cursor()
@@ -44,8 +44,8 @@ def as_server_command():
         "reload": True,
         "reload_dirs": [root_dir],
         "factory": True,
-        "port": 6543,
-        "host": "localhost",
+        "port": app_port,
+        "host": "0.0.0.0",
         "loop": "asyncio"
     })
 
